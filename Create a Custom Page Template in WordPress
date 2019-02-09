@@ -1,0 +1,96 @@
+What is a Custom Page in WordPress :
+-------------------------------------
+By default WordPress allows you to create posts and pages. Your WordPress theme controls the appearance of your pages by utilizing a template file called page.php.
+
+This template file affects all single pages that you create in WordPress. However, not all pages are the same. Little changes in their layout and appearance can make them unique and a lot more useful.
+
+Creating a custom page template in WordPress requires a basic understanding of HTML, CSS, and PHP.
+
+Creating a Custom Page in WordPress :
+--------------------------------------
+First, you need to open a plain text editor like Notepad on your computer. In the blank file add this line of code at the top:
+
+<?php /* Template Name: CustomPageT1 */ ?>
+
+This code simply tells WordPress that this is a template file and it should be recognized as CustomPageT1. You can name your template anything you want as long as it makes sense to you.
+
+Once you have added the code, save the file to your desktop as, custompaget1.php.
+
+You can save the file with any name, just make sure that it ends with .php extension.
+
+For this next step, you will need to connect to your website using an FTP client.
+
+Once connected, go to your current theme or child theme folder. You will find it in /wp-content/themes/ directory. Next, upload your custom page template file to your theme.
+
+Now you need to login to your WordPress admin area to create a new page or edit an existing one.
+
+On the page editing screen, scroll down to ‘Page Attributes’ section, and you will find a template drop down menu. Clicking on it will allow you to select the template you just created.
+
+Selecting your custom page template
+
+Now if you change template and visit this page, then you will get to see a blank page. That’s because your template is empty and does not tell WordPress what to display.
+
+Don’t worry, we will show you how to easily edit your custom page template.
+
+Editing Your Custom Page Template :
+----------------------------------
+Your custom page template is like any other theme file in WordPress. You can add any HTML, template tags, or PHP code in this file.
+
+The easiest way to get started with your custom page is by copying the existing page template provided by your theme.
+
+Open your FTP client and go to your theme folder. There you will find a file called page.php. You need to download this file to your computer.
+
+Downloading page template file
+
+Open the page.php file in a plain text editor like Notepad, and copy all its content except the header part.
+
+Template header of a typical page.php file in a WordPress theme
+
+The header part is the commented out part at the top of the file. We are not copying it, because our custom page template already has one.
+
+Now you need to open your custom page template file and paste it at the end.
+
+Your custom page file would now look something like this :
+----------------------------------------------------------
+
+<?php /* Template Name: CustomPageT1 */ ?>
+ 
+<?php get_header(); ?>
+ 
+<div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+        <?php
+        // Start the loop.
+        while ( have_posts() ) : the_post();
+ 
+            // Include the page content template.
+            get_template_part( 'template-parts/content', 'page' );
+ 
+            // If comments are open or we have at least one comment, load up the comment template.
+            if ( comments_open() || get_comments_number() ) {
+                comments_template();
+            }
+ 
+            // End of the loop.
+        endwhile;
+        ?>
+ 
+    </main><!-- .site-main -->
+ 
+    <?php get_sidebar( 'content-bottom' ); ?>
+ 
+</div><!-- .content-area -->
+ 
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>
+Save your custom page template file and upload it back to your theme folder using FTP.
+
+You can now visit the page you created using custom page template. It will now look exactly like your other pages in WordPress.
+
+You can now continue editing your custom page template file. You can customize it in any way you want. For example, you can remove the sidebar, add custom PHP code, add any other HTML you want.
+
+You can add the content by editing the page in WordPress page editor screen. You can also leave the content area in page editor completely empty, and add custom content directly in your page template.
+
+Video Url :
+-----------
+https://youtu.be/1ZdHI8HuboA
